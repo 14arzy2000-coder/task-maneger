@@ -1,11 +1,13 @@
-def load_file(task_list, file_name):
-    with open(file_name, "r", encoding="utf-8") as file:
-        for line in file:
-            task_list.append(line)
-    return task_list
+##===========================================================
+##      Модуль который загружает и сохраняет задачи
+##===========================================================
+def save_tasks(task_collection, name_file):
+    with open(name_file, "w", encoding="utf-8") as file:
+        file.writelines(task_collection)
 
-
-def save_file(task_list, file_name):
-    with open(file_name, "w", encoding="utf-8") as file:
-        for task in task_list:
-            file.writelines (f"{task}\n")
+def load_tasks(name_file):
+    try:
+        with open(name_file, "r", encoding="utf-8") as file:
+            return file.readlines()
+    except FileNotFoundError:
+        return []
