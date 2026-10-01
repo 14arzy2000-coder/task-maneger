@@ -1,14 +1,13 @@
-"""модуль для утилит"""
-
-
-"""функции для порверки подтверждения"""
+##======================================================
+##              Модуль для хранения утилит
+##======================================================
 def check_confirm(select_task, task_list):
     if select_task.isdigit():
-        if int(select_task) > 0 and int(select_task) <= len(task_list):
+        if 0 < int(select_task) <= len(task_list):
             return True
         else:
             print(f"Задачи с номером {select_task} нет в списке!")
             return False
     else:
-        print(f"Введите именно номер задачи!")
+        print("Введите именно номер задачи!")
         return False
