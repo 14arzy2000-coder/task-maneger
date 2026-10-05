@@ -28,3 +28,18 @@ def save_file(task_list,NAME_FILE_SAVES):
         file.write(f"{task_list}\n")
 
 
+
+
+
+
+import tkinter as tk
+
+root = tk.Tk()
+
+root.geometry("300x300")
+root.iconbitmap()
+
+button_start = tk.Button(root, text="start")
+button_start.pack()
+
+root.mainloop()
