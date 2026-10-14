@@ -1,66 +1,51 @@
 import tkinter as tk
-score = 0
-
-
-a = 0
-b = 0
-
-def summa():
-    pass
-
-def dif():
-    pass
-
-def divide():
-    pass
-
-def multyply():
-    pass
-
-def result():
-    pass
-
-def start():
-    global score
-    score +=1
-    label.config(text=str(score))
 
 root = tk.Tk()
+root.geometry("300x300")
 
-header = tk.Frame(root, bg="black", height=300, width=300)
-header.pack(side="top", fill="x")
+collection = ["task_1 | create menu", "task_2 | add main", "task_3 | update main", "task_4 | delete main"]
 
-main = tk.Frame(root, bg="black", height=300, width=300)
-main.pack(side="bottom", fill="x")
 
-footer = tk.Frame(root, bg="black", height=300, width=300)
-footer.pack(side="bottom", fill="x")
+frame_menu = None
+frame_tasks = None
+tasks = None
 
-footer = tk.Frame(root, bg="black", height=300, width=300)
-footer.pack(side="bottom", fill="x")
+def main():
+    global frame_menu, frame_tasks, tasks
+    frame_menu = tk.Frame(root, background="grey", width=500, height=500)
+    frame_tasks = tk.Frame(root, background="green", width=500, height=500)
+    frame_menu.pack_propagate(False)
+    frame_tasks.pack_propagate(False)
 
-button_start = tk.Button(root, text="start")
-button_start.pack()
+    button_show_tasks = tk.Button(frame_menu, text="Все задачи", command=show_all_tasks)
+    button_show_tasks.pack()
 
-bottom_frame = tk.Frame(root, bg="black", height=300, width=300)
-bottom_frame.pack(side="bottom", fill="x")
+    button_exit = tk.Button(frame_menu, text="Exit", command=create_menu)
+    button_exit.pack()
+    tasks = tk.Listbox(frame_tasks)
+    tasks.pack()
 
-list_buttons = []
+    return frame_menu, frame_tasks
 
-for i in range(10):
-    b = (tk.Button(bottom_frame))
-    b.pack(side="left")
-    b.config(text=str(i))
+def show_all_tasks():
+    frame_menu.pack_forget()
+    frame_tasks.pack()
 
-states = ['multi', 'sum', 'dif', 'divide', 'result']
+    tasks.delete(0, tk.END)
 
-label = tk.Label(header, text="white")
-label.pack()
+    for number, content in enumerate(collection):
+        word = ''
+        for symbol in content:
+            if symbol != '|':
+                word = f"{word}{symbol}"
+            else:
+                break
+        tasks.insert(tk.END, word)
 
-text = tk.Label(main, height=20, width=30)
-text.pack()
+def create_menu():
+    frame_tasks.pack_forget()
+    frame_menu.pack()
 
-entry_text = tk.Entry(footer)
-entry_text.pack()
-
+main()
+create_menu()
 root.mainloop()
