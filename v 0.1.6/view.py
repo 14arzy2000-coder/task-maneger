@@ -1,8 +1,6 @@
-```python
 import tkinter as tk
 
 from interface import Interface
-
 
 class View:
     def __init__(self):
@@ -15,7 +13,5 @@ class View:
     def show(self):
         self.root.mainloop()
 
-
 view = View()
 view.show()
-```
