@@ -1,11 +1,9 @@
-```python
 import tkinter as tk
 
 from button import AppButton
 from listbox import AppListbox
 from frame import AppFrame
-from model import Task, StudyTask, HomeTask
-
+from rod import Task, StudyTask, HomeTask
 
 class Interface:
     def __init__(self, root):
@@ -86,4 +84,3 @@ class Interface:
 
         if number is not None:
             self.collection.pop(number)
-```
